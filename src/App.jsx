@@ -74,7 +74,7 @@ function App({ data }) {
             </div>
             <div className="adding">
               <AddBuilding 
-                data={data}
+                newData={newData}
                 dataUpdate={dataUpdate}
               />
             </div>

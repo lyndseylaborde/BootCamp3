@@ -3,14 +3,17 @@ import { useRef } from "react";
 
 function AddBuilding({newData, dataUpdate}) {
 
-        const currID = 149;
         const inputCode = useRef('');
         const inputName = useRef('');;
         const inputLatitude = useRef(0);
         const inputLongitude = useRef(0);
         const inputAddress = useRef('');
-        console.log(inputCode)
-        console.log(inputName)
+
+    function generateID() {
+        const currID = Math.floor(Math.random() * 10) + 149; 
+        console.log(currID);
+        return(currID)
+    }
 
     function addBuilding() {
         const newCode = inputCode.current.value;
@@ -19,7 +22,7 @@ function AddBuilding({newData, dataUpdate}) {
         const newLongitude = inputLongitude.current.value;
         const newAddress = inputAddress.current.value
         const newBuilding = {
-            id: 180,
+            id: generateID(),
             code: newCode,
             name: newName,
             coordinates: {
@@ -28,10 +31,9 @@ function AddBuilding({newData, dataUpdate}) {
             },
             address: newAddress
         };
-        console.log(newBuilding);
-        //const new_data = newData
-        //newData.push(newBuilding);
-        //dataUpdate(newBuilding);
+        newData.push(newBuilding);
+        dataUpdate(newData);
+        return <>{newData}</>;
     }
     return (
         <div>
